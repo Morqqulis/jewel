@@ -1,0 +1,10 @@
+@import './reset.css';
+@import './tailwind.css';
+@import url(https://fonts.googleapis.com/css?family=Indie+Flower:700:400:500:600&display=swap);
+
+body {
+    font-family: 'Indie Flower', cursive;
+}
+main {
+    background: url('../assets/jewels/bg.jpg') center/cover no-repeat;
+}

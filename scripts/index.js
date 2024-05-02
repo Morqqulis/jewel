@@ -6,10 +6,16 @@ const winsElement = document.querySelector('.crystall__wins')
 const losesElement = document.querySelector('.crystall__loses')
 const choiceButtons = document.querySelectorAll('.crystall__button')
 
+let currentSum = 0
+
 const generateRandomNumber = () => Math.floor(Math.random() * 10) + 1
 
+const resetGame = () => {
+    currentSum = 0
+    targetElement.innerHTML = `<span class="text-5xl">${currentSum}</span> <br> Target number`
+}
+
 const placeResults = () => {
-    let currentSum = 0
     let targetSum = Math.floor(Math.random() * 100) + 1
     let wins = 0
     let loses = 0
@@ -30,15 +36,23 @@ const placeResults = () => {
             if (currentSum === targetSum) {
                 wins++
                 winsElement.innerHTML = `<span class="text-5xl">${wins}</span> <br> Wins`
-                currentSum = 0
+                resetGame()
                 targetSum = Math.floor(Math.random() * 100) + 1
                 sumElement.innerHTML = `<span class="text-5xl">${targetSum}</span> <br> Number to match`
+                choiceButtons.forEach(btn => {
+                    const buttonValue = Math.floor(Math.random() * 10) + 1
+                    btn.dataset.value = buttonValue.toString()
+                })
             } else if (currentSum > targetSum) {
                 loses++
                 losesElement.innerHTML = `<span class="text-5xl">${loses}</span> <br> Loses`
-                currentSum = 0
+                resetGame()
                 targetSum = Math.floor(Math.random() * 100) + 1
                 sumElement.innerHTML = `<span class="text-5xl">${targetSum}</span> <br> Number to match`
+                choiceButtons.forEach(btn => {
+                    const buttonValue = Math.floor(Math.random() * 10) + 1
+                    btn.dataset.value = buttonValue.toString()
+                })
             }
         })
     })
